@@ -5,7 +5,7 @@
 
 void out(int number);
 int inverting_3_byte(int *number);
-int write_mask_in_3_byte(int *number, const char *mask);
+int write_mask_in_3_byte(int *number, const unsigned char mask);
 
 int main (void) {
     int number = 0xDDCCBBAA, result, i;
@@ -24,7 +24,7 @@ int main (void) {
 
     printf("\nChanging 3 bytes by mask\n");
     printf("Old number value = \t%X\n", number);
-    write_mask_in_3_byte(&number, &mask);
+    write_mask_in_3_byte(&number, mask);
     printf("New number value = \t%X\n", number);
     return 0;
 }
@@ -66,17 +66,16 @@ int inverting_3_byte(int *number) {
 }
 
 
-int write_mask_in_3_byte(int *number, const char *mask) {
-    unsigned char specified_mask = *mask;
+int write_mask_in_3_byte(int *number, const unsigned char mask) {
     int i;
     printf("Mask ");
     for (int i = 7; i >= 0; i--) {
-        printf("%d ", (*mask >> i) & 1);
-    if ((*mask >> i) & 1) {
+        printf("%d ", (mask >> i) & 1);
+    if ((mask >> i) & 1) {
         *number |= (1 << (i + 16));
     } else {
         *number &= ~(1 << (i + 16));
     }
     }
-    printf("\t%X\n", specified_mask);
+    printf("\t%X\n", mask);
 }
