@@ -18,7 +18,7 @@ union code {
 int byte_bits(int *number);
 // Запись в 3-й байт 4-х байтового числа маски из 8 бит
 int write_mask_in_3_byte(int *number, unsigned char const *const mask);
-// Инверсия 3-го байта (целиком) в 4-х байтового числа
+// Инверсия 3-го байта (целиком) в 4-х байтовом числе
 int byte_change(int * number);
 
 int main(void) {
