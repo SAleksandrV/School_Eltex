@@ -1,13 +1,6 @@
 #include <stdio.h>
 
 /* Вывести по байтам число 0xDDCCBBAA (16 система счисления)
-<<<<<<< HEAD
-Инвертировать 3 байт 4-x байтового числа. Изменение 3 байта по маске маску*/
-
-void out(int number);
-int inverting_3_byte(int *number);
-int write_mask_in_3_byte(int *number, const char *mask);
-=======
 Инвертировать 3 байт 4-x байтового числа. Изменить 3 байт по маске*/
 
 // Вывод 4-х байтового числа по байтам и битам
@@ -16,7 +9,6 @@ void out(int number);
 int inverting_3_byte(int *number);
 // Запись в 3-й байт 4-х байтового числа маски из 8 бит
 int write_mask_in_3_byte(int *number, const unsigned char mask);
->>>>>>> cb6354401e4efc8d4aa98dda1818fffe0cb3dc79
 
 int main (void) {
     int number = 0xDDCCBBAA, result, i;
@@ -35,15 +27,10 @@ int main (void) {
 
     printf("\nChanging 3 bytes by mask\n");
     printf("Old number value = \t%X\n", number);
-<<<<<<< HEAD
-    write_mask_in_3_byte(&number, &mask);
-=======
     write_mask_in_3_byte(&number, mask);
->>>>>>> cb6354401e4efc8d4aa98dda1818fffe0cb3dc79
     printf("New number value = \t%X\n", number);
     return 0;
 }
-
 
 void out (int number) {
     unsigned char result;
@@ -63,7 +50,6 @@ void out (int number) {
     printf("\n");
 }
 
-
 int inverting_3_byte(int *number) {
     int i;
     for (i = 31; i >=0; i--) {
@@ -80,31 +66,16 @@ int inverting_3_byte(int *number) {
     }
 }
 
-
-<<<<<<< HEAD
-int write_mask_in_3_byte(int *number, const char *mask) {
-    unsigned char specified_mask = *mask;
-    int i;
-    printf("Mask ");
-    for (int i = 7; i >= 0; i--) {
-        printf("%d ", (*mask >> i) & 1);
-    if ((*mask >> i) & 1) {
-=======
 int write_mask_in_3_byte(int *number, const unsigned char mask) {
     int i;
     printf("Mask ");
     for (int i = 7; i >= 0; i--) {
         printf("%d ", (mask >> i) & 1);
     if ((mask >> i) & 1) {
->>>>>>> cb6354401e4efc8d4aa98dda1818fffe0cb3dc79
         *number |= (1 << (i + 16));
     } else {
         *number &= ~(1 << (i + 16));
     }
     }
-<<<<<<< HEAD
-    printf("\t%X\n", specified_mask);
-=======
     printf("\t%X\n", mask);
->>>>>>> cb6354401e4efc8d4aa98dda1818fffe0cb3dc79
 }
