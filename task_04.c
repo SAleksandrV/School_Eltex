@@ -58,7 +58,7 @@ void add_subscriber(struct phone_directory *group, int *count) {
         scanf("%s", group[*count].surname);
         printf("Input phone_number:\t\t");
         scanf("%s", group[*count].phone_number);
-        printf("Name %s Last name %s phone number %s\n", group[*count].name, group[*count].surname, group[*count].phone_number);
+        printf("\n\tSubscriber added\nNAME\t\t %s\nLAST NAME\t %s\nPHONE NUMBER\t %s\n", group[*count].name, group[*count].surname, group[*count].phone_number);
         *count = *count + 1;
     }
 }
