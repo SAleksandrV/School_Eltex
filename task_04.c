@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define SIZE 100
+#define SIZE 3
 
 /* Программа телефонный справочник */
 struct phone_directory {
@@ -81,9 +81,11 @@ void delete_subscriber(struct phone_directory *group, int *count) {
                     strcpy(group[j].surname, group[j + 1].surname);
                     strcpy(group[j].phone_number, group[j + 1].phone_number);
                 }
-                strcpy(group[*count - 1].name, "");
-                strcpy(group[*count - 1].surname, "");
-                strcpy(group[*count - 1].phone_number, "");
+                if (*count == SIZE -1) {
+                    strcpy(group[*count - 1].name, "");
+                    strcpy(group[*count - 1].surname, "");
+                    strcpy(group[*count - 1].phone_number, "");
+                }
                 *count = *count - 1;
                 temp = 1;
             }
