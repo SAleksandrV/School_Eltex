@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define SIZE 3
+#define SIZE 100
 
 /* Программа телефонный справочник */
 struct phone_directory {
