@@ -3,7 +3,7 @@
 ### Работа с программной утилитой Valgrind и отладчиком GDB:
     - установил утилиту Valgring (sudo apt install valgrind), проверил версию (valgrind --version)
     - скомпилировал программу для проверки динамической памяти (gcc -g program.c)
-    - запустили программу с утилитой Valgrind (valgrind --leak-check=full --show-leak-kinds=all ./program)
+    - запустил программу с утилитой Valgrind (valgrind --leak-check=full --show-leak-kinds=all ./program)
 ![image_1](./image_1.png)
 *рис. 1 Ошибок при работе с динамической памятью нет*
     - создал ошибку, не освободил память после выделения
