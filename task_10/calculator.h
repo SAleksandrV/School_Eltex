@@ -1,9 +1,9 @@
 #ifndef CALCULATOR_H
 #define CALCULATOR_H
 
-float add(float const a, float const b);
-float subtract(float const a, float const b);
-float multiply(float const a, float const b);
-float divide(float const a, float const b);
+int add(int  a, int b);
+int subtract(int  a, int b);
+int multiply(int  a, int b);
+double divide(double  a, double b);
 
 #endif // CALCULATOR_H

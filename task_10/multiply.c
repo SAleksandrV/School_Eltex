@@ -1,6 +1,6 @@
 #include "calculator.h"
 
-float multiply(float const a, float const b)
+int multiply(int a, int b)
 {
     return a * b;
 }

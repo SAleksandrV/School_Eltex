@@ -1,6 +1,6 @@
 #include "calculator.h"
 
-float divide(float const a, float const b, float *result)
+double divide(double a, double b)
 {
-    *result = a / b;
+    return (double) a / b;
 }

@@ -1,6 +1,6 @@
 #include "calculator.h"
 
-float add(float const a, float const b, float *result)
+int add(int a, int b)
 {
-    *result = a + b;
+    return a + b;
 }
