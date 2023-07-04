@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "typeinfo": "c",
-        "dlfcn.h": "c"
+        "dlfcn.h": "c",
+        "stdlib.h": "c"
     }
 }
