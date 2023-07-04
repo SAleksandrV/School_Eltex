@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
     char buffer[BUFFER_SIZE + 1];
     int file, flags = O_RDWR | O_CREAT;
-    mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH; // 0777
+    mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
     ssize_t read_bytes, write_bytes;
 
     if (argc < 2)
@@ -34,24 +34,26 @@ int main(int argc, char *argv[])
 
     while ((read_bytes = read (file, buffer, BUFFER_SIZE)) > 0)
     {
-        buffer[read_bytes] = 0;
+        buffer[read_bytes] = '\0';
         printf("%s\n", buffer);
     }
     if (read_bytes < 0)
     {
         printf("Cannot read file\n");
         close(file);
+        exit(EXIT_FAILURE);
     }
 
     strcpy(buffer, "Training and work!\n");
-    write_bytes = write(file, buffer, sizeof(buffer));
-    if (write_bytes == -1)
+    write_bytes = write(file, buffer, strlen(buffer));
+    if (write_bytes < 0)
     {
         printf("Error when writing to a file\n");
         close(file);
+        exit(EXIT_FAILURE);
     }
 
-    if (write_bytes < (long int)sizeof(buffer))
+    if (write_bytes < strlen(buffer))
     {
         printf("Error when writing to a file\n");
         close(file);
