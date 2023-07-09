@@ -31,7 +31,6 @@ int main(void) {
     square_spiral(matrix, SIZE_01);
     puts("\tSQUARE TRANSPOSITION");
     square_transposition(matrix, SIZE_01);
-
     return 0;
 }
 
@@ -71,6 +70,7 @@ int square(int matrix[][SIZE_01], const int size) {
     }
 }
 
+
 int main_diagonal(int matrix[][SIZE_01], const int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
@@ -86,6 +86,7 @@ int main_diagonal(int matrix[][SIZE_01], const int size) {
     }
 }
 
+
 int side_diagonal(int matrix[][SIZE_01], const int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
@@ -100,6 +101,7 @@ int side_diagonal(int matrix[][SIZE_01], const int size) {
         printf("\n");
     }
 }
+
 
 int square_spiral(int matrix[][SIZE_01], const int size) {
     int i, j, start_row = 0, end_row = size - 1, start_col = 0, end_col = size - 1, count = 1;
@@ -122,6 +124,7 @@ int square_spiral(int matrix[][SIZE_01], const int size) {
         start_col++;
     }
 
+
     for (i = 0; i < size; i++) {
         for (j = 0; j < size; j++) {
             printf("%2d ", matrix[i][j]);
@@ -129,6 +132,7 @@ int square_spiral(int matrix[][SIZE_01], const int size) {
         printf("\n");
     }
 }
+
 
 int square_transposition(int matrix[][SIZE_01], const int size) {
     int i, j, temp;

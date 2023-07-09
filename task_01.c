@@ -71,11 +71,11 @@ int write_mask_in_3_byte(int *number, const unsigned char mask) {
     printf("Mask ");
     for (int i = 7; i >= 0; i--) {
         printf("%d ", (mask >> i) & 1);
-    if ((mask >> i) & 1) {
-        *number |= (1 << (i + 16));
-    } else {
-        *number &= ~(1 << (i + 16));
-    }
+        if ((mask >> i) & 1) {
+            *number |= (1 << (i + 16));
+        } else {
+            *number &= ~(1 << (i + 16));
+        }
     }
     printf("\t%X\n", mask);
 }
