@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include "calculator.h"
 
-int main(void)
-{
+int main(void) {
     int number, first, second;
     double result = 0.0;
     printf("\tSIMPLE CALCULATOR PROGRAM\n");

@@ -4,7 +4,8 @@
 
 #define SIZE 255
 
-int main() {
+int main()
+{
     char file_name[SIZE];
 
     // Initialize Ncurses
@@ -24,7 +25,8 @@ int main() {
 
     // Open file
     FILE *file = fopen(file_name, "r+");
-    if (file == NULL) {
+    if (file == NULL)
+    {
         printw("File opening error.\n");
         refresh();
         getch();
@@ -35,10 +37,12 @@ int main() {
     // Read and display file content in the window
     char sym;
     int row = 1, col = 1;
-    while ((sym = fgetc(file)) != EOF) {
+    while ((sym = fgetc(file)) != EOF)
+    {
         mvwaddch(win, row, col, sym);
         col++;
-        if (col == COLS - 2) {
+        if (col == COLS - 2)
+        {
             col = 1;
             row++;
         }
@@ -48,32 +52,39 @@ int main() {
 
     // Modify file content
     char new_sym;
-    while ((new_sym = wgetch(win)) != KEY_F(1)) {
-        if (new_sym == KEY_BACKSPACE || new_sym == '\b') {
+    while ((new_sym = wgetch(win)) != KEY_F(10))
+    {
+        if (new_sym == KEY_BACKSPACE || new_sym == '\b')
+        {
             col--;
             if (col < 1) {
                 col = COLS - 2;
                 row--;
-                if (row < 1) {
+                if (row < 1)
+                {
                     row = 1;
                 }
             }
             mvwaddch(win, row, col, ' ');
             fseek(file, (row - 1) * (COLS - 2) + (col - 1), SEEK_SET);
             fputc(' ', file);
-        } else if (new_sym == '\n') {
+        } else if (new_sym == '\n')
+        {
             col = 1;
             row++;
-            if (row >= LINES - 2) {
+            if (row >= LINES - 2)
+            {
                 row = LINES - 2;
             }
             fseek(file, (row - 1) * (COLS - 2), SEEK_SET);
-        } else {
+        } else
+        {
             mvwaddch(win, row, col, new_sym);
             fseek(file, (row - 1) * (COLS - 2) + (col - 1), SEEK_SET);
             fputc(new_sym, file);
             col++;
-            if (col >= COLS - 2) {
+            if (col >= COLS - 2)
+            {
                 col = COLS - 2;
             }
         }

@@ -6,41 +6,34 @@
 void operations (int libraries[5]);
 
 
-int main()
-{
+int main() {
     int number_libraries, i = 0;
     int libraries[5] = {0};
     printf("\t\tSIMPLE CALCULATOR PROGRAM\n\tEnter the number of libraries (from 1 to 4): ");
     scanf("%d", &number_libraries);
-    if (number_libraries < 1 || number_libraries > 4)
-    {
+    if (number_libraries < 1 || number_libraries > 4) {
         fprintf(stderr, "Invalid number of libraries\n");
         return 1;
     }
     printf("\nEnter the name of the libraries, for example: libadd or ladd\n");
     printf("\tAvailable libraries: ladd, lsubtract, lmultiply, ldivide\n");
-    while (i < number_libraries)
-    {
+    while (i < number_libraries) {
         char name_library[50];
         printf("Libraries № %d\n", i + 1);
         scanf("%s", name_library);
-        if (strcmp("libadd", name_library) == 0 || strcmp("ladd", name_library) == 0)
-        {
+        if (strcmp("libadd", name_library) == 0 || strcmp("ladd", name_library) == 0) {
             printf("Library %s addedа\n", name_library);
             libraries[1] = 1;
             i++;
-        } else if (strcmp("libsubtract", name_library) == 0 || strcmp("lsubtract", name_library) == 0)
-        {
+        } else if (strcmp("libsubtract", name_library) == 0 || strcmp("lsubtract", name_library) == 0) {
             printf("Library %s addedа\n", name_library);
             libraries[2] = 1;
             i++;
-        } else if (strcmp("libmultiply", name_library) == 0 || strcmp("lmultiply", name_library) == 0)
-        {
+        } else if (strcmp("libmultiply", name_library) == 0 || strcmp("lmultiply", name_library) == 0) {
             printf("Library %s addedа\n", name_library);
             libraries[3] = 1;
             i++;
-        } else if (strcmp("libdivide", name_library) == 0 || strcmp("ldivide", name_library) == 0)
-        {
+        } else if (strcmp("libdivide", name_library) == 0 || strcmp("ldivide", name_library) == 0) {
             printf("Library %s addedа\n", name_library);
             libraries[4] = 1;
             i++;
@@ -50,8 +43,7 @@ int main()
 }
 
 
-void operations(int libraries[5])
-{
+void operations(int libraries[5]) {
     // Загрузка динамических библиотек
     int *add_lib = dlopen("./libadd.so", RTLD_LAZY);
     int *subtract_lib = dlopen("./libsubtract.so", RTLD_LAZY);
@@ -64,10 +56,8 @@ void operations(int libraries[5])
     int (*multiply)(int, int) = dlsym(multiply_lib, "multiply");
     double (*divide)(double, double) = dlsym(divide_lib, "divide");
 
-    while (1)
-    {
+    while (1) {
         int number, first, second;
-        double result = 0.0;
         printf("\n\tSIMPLE CALCULATOR PROGRAM\n");
         printf("Enter two integer numbers\n");
         printf("First number:\t");
@@ -81,8 +71,7 @@ void operations(int libraries[5])
             if (libraries[4]) printf("4 - Divide the first number by the second number\n");
             printf("5 - Close the Calculator program\n");
             scanf("%d", &number);
-            switch (number)
-            {
+            switch (number) {
                 case 1:
                     if (libraries[1]) {
                         printf("\tThe result of addition %d + %d = %d\n", first, second, add(first, second));
@@ -107,7 +96,9 @@ void operations(int libraries[5])
                 case 4:
                     if (second != 0) {
                         if (libraries[4]) {
-                            printf("\tDivision result %d %% %d = %.2lf\n", first, second, divide(first, second));
+                            double result = 0.0;
+                            result = divide(first, second);
+                            printf("\tDivision result %d %% %d = %.2lf\n", first, second, result);
                         } else {
                             printf("\tThere is no such function\n");
                         }
